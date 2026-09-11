@@ -1,0 +1,15 @@
+[Unit]
+Description=caddy
+After=caddy.socket
+
+[Container]
+NoNewPrivileges=true
+Image=docker.io/library/caddy:2
+Network=private.network
+PublishPort=2019:2019
+Volume=/var/home/rootless/caddy:/etc/caddy:z
+Volume=caddy_data:/data
+Volume=caddy_config:/config
+
+[Quadlet]
+DefaultDependencies=false

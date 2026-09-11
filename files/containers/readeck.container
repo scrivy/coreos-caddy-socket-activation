@@ -1,0 +1,15 @@
+[Unit]
+Description=readeck
+
+[Container]
+NoNewPrivileges=true
+Image=codeberg.org/readeck/readeck:latest
+Network=private.network
+PublishPort=8000:8000
+Volume=readeck:/readeck
+
+[Service]
+Restart=always
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,49 @@
+variant: fcos
+version: 1.7.0
+passwd:
+  users:
+  - name: core
+    ssh_authorized_keys:
+    - ssh-ed25519 CHANGEME
+  - name: rootless
+    ssh_authorized_keys:
+    - ssh-ed25519 CHANGEME
+storage:
+  directories:
+  - path: /home/rootless/.config
+    overwrite: true
+    user:
+      name: rootless
+    group:
+      name: rootless
+  - path: /home/rootless/caddy
+    overwrite: true
+    user:
+      name: rootless
+    group:
+      name: rootless
+  trees:
+  - local: containers
+    path: /home/rootless/.config/containers/systemd
+  files:
+  - path: /var/lib/systemd/linger/rootless
+    mode: 0644
+  - path: /home/rootless/.config/systemd/user/caddy.socket
+    overwrite: true
+    mode: 0644
+    contents:
+      local: caddy.socket
+  - path: /home/rootless/caddy/Caddyfile
+    contents:
+      local: Caddyfile
+    mode: 0644
+    overwrite: true
+    user:
+      name: rootless
+    group:
+      name: rootless
+  links:
+  - path: /home/rootless/.config/systemd/user/sockets.target.wants/caddy.socket
+    overwrite: true
+    target: /home/rootless/.config/systemd/user/caddy.socket
+    hard: false
