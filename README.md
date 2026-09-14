@@ -10,4 +10,4 @@ This demo builds upon [eriksjolund's caddy socket activation](https://github.com
 
 ## To launch the virtual machine
 
-I'll write a post with this example soon but until then see [this blog post](https://danielscrivano.com/blog/posts/nightscout/) for one example of how you might launch an ignition file using libvirt.
+I'll eventually write a post but until then see [this blog post](https://danielscrivano.com/blog/posts/nightscout/) for one example of how you might launch an ignition file using libvirt.
